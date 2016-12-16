@@ -16,4 +16,5 @@
 //= require bootstrap-sprockets
 //= require moment
 //= require select2
+//= require recurring_select
 //= require_tree .

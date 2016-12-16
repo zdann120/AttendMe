@@ -1,0 +1,35 @@
+h1 Listing events
+
+table
+  thead
+    tr
+      th Token
+      th User
+      th Begins
+      th Ends
+      th Repeats
+      th Repeat rule
+      th Title
+      th Description
+      th
+      th
+      th
+
+  tbody
+    - @events.each do |event|
+      tr
+        td = event.token
+        td = event.user
+        td = event.begins
+        td = event.ends
+        td = event.repeats
+        td = event.repeat_rule
+        td = event.title
+        td = event.description
+        td = link_to 'Show', event
+        td = link_to 'Edit', edit_event_path(event)
+        td = link_to 'Destroy', event, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Event', new_event_path

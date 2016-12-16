@@ -1,0 +1,30 @@
+p#notice = notice
+
+p
+  strong User: 
+  = @event.user.email
+p
+  strong Begins: 
+  = @event.begins
+p
+  strong Ends: 
+  = @event.ends
+p
+  strong Repeat rule: 
+  = @event.repeat_rule
+p
+  strong Title: 
+  = @event.title
+p
+  strong Description: 
+  = @event.description
+
+h2 Upcoming Occurrences
+table.table
+  - @event.remaining_occurrences.each do |o|
+    tr
+      td == o
+
+= link_to 'Edit', edit_event_path(@event)
+'|
+= link_to 'Back', events_path

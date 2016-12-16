@@ -1,0 +1,9 @@
+= simple_form_for @event do |f|
+  == f.input :title
+  == f.association :user
+  == f.input :begins
+  == f.input :ends
+  == f.input :repeats
+  == f.select_recurring :repeat_rule, nil, allow_blank: true
+  == f.input :description
+  == f.submit 'Create Event'

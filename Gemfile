@@ -23,6 +23,7 @@ gem 'devise'
 gem 'pg'
 gem 'pundit'
 gem 'slim-rails'
+gem 'simple_form'
 group :development do
   gem 'better_errors'
   gem 'hub', :require=>nil
@@ -48,3 +49,7 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-fontawesome'
   gem 'rails-assets-select2'
 end
+
+gem 'recurring_select', github: 'RundownApp/recurring_select'
+gem 'activemodel-serializers-xml', git: 'https://github.com/rails/activemodel-serializers-xml'
+gem 'draper'
