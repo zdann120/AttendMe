@@ -2,9 +2,6 @@ class Event < ApplicationRecord
   belongs_to :user
   has_secure_token
   has_many :event_exceptions
-  def to_s
-    email
-  end
 
   def rule
     if RecurringSelect.is_valid_rule?(repeat_rule)

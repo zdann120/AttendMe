@@ -11,7 +11,7 @@ class EventExceptionsController < ApplicationController
   def destroy
     @event = Event.find params[:event_id]
     time = Chronic.parse(params[:id])
-    e = @event.event_exceptions.find_by_skip_time(time)
+    e = @event.event_exceptions.find_by_skip_time!(time)
     e.destroy
     redirect_to @event, notice: 'Exception removed'
   end
