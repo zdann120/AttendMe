@@ -12,6 +12,7 @@ p
 p
   strong Repeat rule: 
   = @event.repeat_rule
+  = @event.schedule.to_s
 p
   strong Title: 
   = @event.title
@@ -24,6 +25,11 @@ table.table
   - @event.remaining_occurrences.each do |o|
     tr
       td == o
+      td 
+        == form_for EventException.new, 
+          url: event_event_exceptions_path(@event), method: :post do |f|
+          == f.hidden_field :skip_time, value: o.to_datetime.to_s
+          == f.submit 'Cancel', class: 'btn btn-link' if @event.schedule.occurring_at?(o)
 
 = link_to 'Edit', edit_event_path(@event)
 '|

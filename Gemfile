@@ -26,6 +26,7 @@ gem 'slim-rails'
 gem 'simple_form'
 group :development do
   gem 'better_errors'
+  gem 'binding_of_caller'
   gem 'hub', :require=>nil
   gem 'rails_layout'
   gem 'spring-commands-rspec'
@@ -52,4 +53,5 @@ end
 
 gem 'recurring_select', github: 'RundownApp/recurring_select'
 gem 'activemodel-serializers-xml', git: 'https://github.com/rails/activemodel-serializers-xml'
-gem 'draper'
+gem 'draper', github: 'drapergem/draper', branch: 'master'
+gem 'chronic'
