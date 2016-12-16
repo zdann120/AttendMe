@@ -42,3 +42,9 @@ group :test do
   gem 'launchy'
   gem 'selenium-webdriver'
 end
+
+source 'https://rails-assets.org' do
+  gem 'rails-assets-moment'
+  gem 'rails-assets-fontawesome'
+  gem 'rails-assets-select2'
+end
