@@ -11,25 +11,34 @@ p
   = @event.ends
 p
   strong Repeat rule: 
-  = @event.repeat_rule
-  = @event.schedule.to_s
+  code = @event.schedule.to_s
 p
   strong Title: 
   = @event.title
 p
   strong Description: 
   = @event.description
+.row
+  .col-md-6
 
-h2 Upcoming Occurrences
-table.table
-  - @event.remaining_occurrences.each do |o|
-    tr
-      td == o
-      td 
-        == form_for EventException.new, 
-          url: event_event_exceptions_path(@event), method: :post do |f|
-          == f.hidden_field :skip_time, value: o.to_datetime.to_s
-          == f.submit 'Cancel', class: 'btn btn-link' if @event.schedule.occurring_at?(o)
+    h2 Upcoming Occurrences
+    table.table
+      - @event.remaining_occurrences.each do |o|
+        tr
+          td == o
+          td 
+            == form_for EventException.new, 
+              url: event_event_exceptions_path(@event), method: :post do |f|
+              == f.hidden_field :skip_time, value: o.to_datetime.to_s
+              == f.submit 'Cancel', class: 'btn btn-link' if @event.schedule.occurring_at?(o)
+  .col-md-6
+    h2 Exceptions
+    table.table
+      - @event.event_exceptions.each do |ee|
+        tr
+          td == ee.skip_time
+          td == link_to "Remove Exception",
+            event_event_exception_path(@event, ee.skip_time), method: :delete
 
 = link_to 'Edit', edit_event_path(@event)
 '|
