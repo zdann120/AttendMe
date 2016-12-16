@@ -1,8 +1,9 @@
 = simple_form_for @event do |f|
   == f.input :title
   == f.association :user
-  == f.input :begins
-  == f.input :ends
+  == f.input :begins, label: 'Start Time (date ignored)'
+  == f.input :ends, label: 'End Time (date ignored)'
+  == f.input :series_ends, label: 'Event stops repeating on'
   == f.input :repeats
   == f.select_recurring :repeat_rule, nil, allow_blank: true
   == f.input :description

@@ -15,9 +15,9 @@ class Event < ApplicationRecord
   end
 
   def schedule
-    test_starts = Chronic.parse('today at 3pm')
+    test_starts = Chronic.parse(begins.to_s)
     if rule
-      sched = IceCube::Schedule.new(start = test_starts, end_time: test_starts + 2.hours)
+      sched = IceCube::Schedule.new(start = test_starts, end_time: ends)
       sched.add_recurrence_rule(rule)
       if !event_exceptions.blank?
         event_exceptions.each do |ee|
@@ -31,6 +31,6 @@ class Event < ApplicationRecord
   end
 
   def remaining_occurrences
-    schedule.occurrences(ends) if schedule
+    schedule.occurrences(series_ends) if schedule
   end
 end

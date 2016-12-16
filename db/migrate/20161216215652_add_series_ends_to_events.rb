@@ -1,0 +1,5 @@
+class AddSeriesEndsToEvents < ActiveRecord::Migration[5.0]
+  def change
+    add_column :events, :series_ends, :datetime
+  end
+end

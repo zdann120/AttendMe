@@ -1,4 +1,7 @@
 p#notice = notice
+p.lead
+  - if @event.schedule.occurring_at?(Time.zone.now)
+    == 'OCCURRING RIGHT NOW!'
 
 p
   strong User: 
@@ -34,9 +37,12 @@ p
   .col-md-6
     h2 Exceptions
     table.table
-      - @event.event_exceptions.each do |ee|
+      tr
+        th Event will not occur on...
+        th Actions
+      - @event.event_exceptions.order(skip_time: :asc).each do |ee|
         tr
-          td == ee.skip_time
+          td == FormatExceptionDate.new(ee.skip_time).to_s
           td == link_to "Remove Exception",
             event_event_exception_path(@event, ee.skip_time), method: :delete
 
