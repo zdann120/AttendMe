@@ -10,4 +10,16 @@ class EventDecorator < Draper::Decorator
   #     end
   #   end
 
+  def start_time
+    object.begins.strftime('%I:%M %p')
+  end
+
+  def end_time
+    object.ends.strftime('%I:%M %p')
+  end
+
+  def next_up
+    object.schedule.next_occurrence.strftime('%A, %b %d, %Y')
+  end
+
 end

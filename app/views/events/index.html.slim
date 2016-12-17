@@ -1,16 +1,11 @@
 h1 Listing events
 
-table
+table.table
   thead
     tr
-      th Token
-      th User
-      th Begins
-      th Ends
-      th Repeats
-      th Repeat rule
       th Title
       th Description
+      th Repeat Rule
       th
       th
       th
@@ -18,14 +13,9 @@ table
   tbody
     - @events.each do |event|
       tr
-        td = event.token
-        td = event.user
-        td = event.begins
-        td = event.ends
-        td = event.repeats
-        td = event.repeat_rule
         td = event.title
         td = event.description
+        td = event.schedule.to_s
         td = link_to 'Show', event
         td = link_to 'Edit', edit_event_path(event)
         td = link_to 'Destroy', event, data: { confirm: 'Are you sure?' }, method: :delete

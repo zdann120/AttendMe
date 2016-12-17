@@ -1,0 +1,13 @@
+.card
+  .card-header
+    | Next 5 Occurrences
+  ul.list-group.list-group-flush
+    - event.remaining_occurrences.take(5).each do |o|
+      li.list-group-item
+        span == o.strftime('%A, %b %d, %Y')
+        span
+          == form_for EventException.new,
+            url: event_event_exceptions_path(@event), method: :post do |f|
+            == f.hidden_field :skip_time, value: o.to_datetime.to_s
+            == f.submit 'Cancel', class: 'btn btn-link float-right' if @event.schedule.occurring_at?(o)
+

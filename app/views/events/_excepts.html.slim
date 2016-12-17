@@ -1,0 +1,10 @@
+.card
+  .card-header
+    | Event will not occur at:
+  ul.list-group.list-group-flush
+    - event.event_exceptions.order(skip_time: :asc).each do |ee|
+      li.list-group-item
+        span == FormatExceptionDate.new(ee.skip_time).to_s
+        span == link_to "Remove Exception",
+          event_event_exception_path(event, ee.skip_time), method: :delete
+
